@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage()
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage()
         //HomeScreen()
         //ProfileThreePage()
         //ViewConsumer(),

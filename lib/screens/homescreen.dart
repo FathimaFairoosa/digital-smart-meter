@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iot/constants/size.dart';
+import 'package:iot/screens/allBillsscreen.dart';
 import 'package:iot/screens/deviseControlscreen.dart';
+import 'package:iot/screens/notificationsScreen.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,15 +11,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final h = MediaQuery.of(context).size.height;
-    final w = MediaQuery.of(context).size.width;
+    h = MediaQuery.of(context).size.height;
+    w = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         //appBar: AppBar(),
         body: Column(
           children: [
             Container(
-              height: h * 0.6,
+              height: h! * 0.6,
               width: double.infinity,
               decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -34,6 +36,21 @@ class HomeScreen extends StatelessWidget {
                       bottomRight: Radius.circular(40))),
               child: Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => NotificationsScreen(),
+                            ));
+                          },
+                          icon: Icon(
+                            Icons.notifications,
+                            color: const Color.fromARGB(255, 4, 39, 68),
+                          ))
+                    ],
+                  ),
                   h15,
                   CircularPercentIndicator(
                     radius: 60.0,
@@ -41,7 +58,11 @@ class HomeScreen extends StatelessWidget {
                     percent: 1.0,
                     center: Text(
                       "18 v",
-                      style: TextStyle(fontSize: 50),
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.w600,
+                          color:
+                              Color.fromARGB(255, 9, 35, 56).withOpacity(0.6)),
                     ),
                     progressColor:
                         Color.fromARGB(255, 42, 126, 194).withOpacity(0.15),
@@ -56,29 +77,35 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               "Usage",
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.black45),
                             ),
                             Text("116 unit",
                                 style: TextStyle(
-                                  fontSize: 20,
-                                )),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
+                                    color: const Color.fromARGB(255, 9, 45, 74)
+                                        .withOpacity(0.5))),
                           ],
                         ),
                         Column(
                           children: [
-                            Text("Amount",
+                            Text(
+                              "Amount",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.black45),
+                            ),
+                            Text("567",
                                 style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w800,
-                                    color: Colors.black45)),
-                            Text("456",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ))
+                                    color: const Color.fromARGB(255, 9, 45, 74)
+                                        .withOpacity(0.5))),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   )
@@ -90,30 +117,35 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    height: h * .2,
-                    width: w * 0.4,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 70, 95, 127),
-                        border: Border.all(style: BorderStyle.none),
-                        borderRadius: BorderRadius.circular(7)),
-                    child: Column(
-                      children: [
-                        h25,
-                        Icon(
-                          Icons.payment,
-                          size: 28,
-                          color: Colors.white,
-                        ),
-                        h15,
-                        Text(
-                          "Pay Bill",
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.white),
-                        )
-                      ],
+                  InkWell(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => AllBills(),
+                    )),
+                    child: Container(
+                      height: h! * .2,
+                      width: w! * 0.4,
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 70, 95, 127),
+                          border: Border.all(style: BorderStyle.none),
+                          borderRadius: BorderRadius.circular(7)),
+                      child: Column(
+                        children: [
+                          h25,
+                          Icon(
+                            Icons.payment,
+                            size: 28,
+                            color: Colors.white,
+                          ),
+                          h15,
+                          Text(
+                            "Pay Bill",
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.white),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   InkWell(
@@ -121,8 +153,8 @@ class HomeScreen extends StatelessWidget {
                       builder: (context) => ControlDevice(),
                     )),
                     child: Container(
-                      height: h * .2,
-                      width: w * 0.4,
+                      height: h! * .2,
+                      width: w! * 0.4,
                       decoration: BoxDecoration(
                           color: Color.fromARGB(255, 70, 95, 127),
                           border: Border.all(style: BorderStyle.none),

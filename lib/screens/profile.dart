@@ -99,7 +99,7 @@ class ProfileThreePage extends StatelessWidget {
                                 children: [
                                   Text("District: calicut"),
                                   w10,
-                                  Text("Pin Code: 657545")
+                                  Text("Pin: 657545")
                                 ],
                               ),
                             ],

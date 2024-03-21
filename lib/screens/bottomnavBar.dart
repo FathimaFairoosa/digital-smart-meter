@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:iot/screens/billHistory.dart';
+import 'package:iot/screens/complaintScreen.dart';
 import 'package:iot/screens/homescreen.dart';
 import 'package:iot/screens/profile.dart';
 
@@ -31,8 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> bottomBarPages = [
     const HomeScreen(),
     ProfileThreePage(),
-    const Page3(),
-    const Page4(),
+    ComplaintsScreen(),
+    BillHistory(),
     const Page5(),
   ];
 
