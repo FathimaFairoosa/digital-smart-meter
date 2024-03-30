@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iot/screens/bottomnavBar.dart';
 import 'package:iot/screens/deviseControlscreen.dart';
+import 'package:iot/screens/graph.dart';
 import 'package:iot/screens/homescreen.dart';
 import 'package:iot/screens/loginScreen.dart';
 import 'package:iot/screens/profile.dart';
@@ -21,12 +22,13 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage()
+      home: 
+      //LineChartSample2()
+      //MyHomePage()
         //HomeScreen()
         //ProfileThreePage()
         //ViewConsumer(),
-        //LoginScreen(),
-        //userregstration(),
+        LoginScreen(),
         //userregstration()
         //Screen1(),
         //ControlDevice()

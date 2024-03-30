@@ -1,28 +1,39 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:iot/constants/size.dart';
+import 'package:iot/models/registrationModel.dart';
 
-class userregstration extends StatelessWidget {
-  userregstration({super.key});
+class Userregstration extends StatelessWidget {
+  Userregstration({super.key});
 
-  //TextEditingController usernameController = TextEditingController();
-  //TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController housenoController = TextEditingController();
+  TextEditingController pinnumberController = TextEditingController();
+  TextEditingController districtController = TextEditingController();
+  TextEditingController phonenumController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController adharnumController = TextEditingController();
+  // TextEditingController usernameController = TextEditingController();
+  // TextEditingController usernameController = TextEditingController();
+  // TextEditingController usernameController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: [
-              SizedBox(
-                height: 30,
-              ),
+              h10,
               TextFormField(
+                controller: usernameController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Enter your name";
@@ -39,6 +50,7 @@ class userregstration extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
+                controller: addressController,
                 decoration: InputDecoration(
                   labelText: "Address",
                   filled: true,
@@ -54,8 +66,9 @@ class userregstration extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      controller: housenoController,
                       decoration: InputDecoration(
-                        labelText: "District",
+                        labelText: "House Number",
                         filled: true,
                         fillColor: Color.fromARGB(255, 219, 237, 241),
                         border: OutlineInputBorder(
@@ -68,6 +81,7 @@ class userregstration extends StatelessWidget {
                   ),
                   Expanded(
                     child: TextFormField(
+                      controller: pinnumberController,
                       validator: (value) {
                         print(value);
                         if (value == null || value.isEmpty) {
@@ -92,6 +106,24 @@ class userregstration extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
+                controller: districtController,
+                validator: (value) {
+                  print(value);
+                  if (value == null || value.isEmpty) {
+                    return 'enter district';
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: "District",
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 219, 237, 241),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+              ),
+              h20,
+              TextFormField(
+                controller: phonenumController,
                 keyboardType: TextInputType.number,
                 validator: (value) {
                   print(value);
@@ -113,6 +145,7 @@ class userregstration extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
+                controller: adharnumController,
                 validator: (value) {
                   print(value);
                   if (value == null || value.isEmpty) {
@@ -133,6 +166,7 @@ class userregstration extends StatelessWidget {
                 height: 30,
               ),
               TextFormField(
+                controller: emailController,
                 decoration: InputDecoration(
                     labelText: "E-Mail",
                     filled: true,
@@ -141,22 +175,41 @@ class userregstration extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10))),
               ),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    //print("hello");
-                    if (_formKey.currentState!.validate()) {
-                      print("success");
-                    } else {
-                      print("Failure");
-                    }
-                  },
-                  child: Text("Submit"))
+              Container(
+                  height: 55,
+                  width: size.width,
+                  decoration: BoxDecoration(
+                      border: Border.all(style: BorderStyle.none),
+                      borderRadius: BorderRadius.circular(8),
+                      color: const Color.fromARGB(255, 10, 58, 97)),
+                  child: Center(
+                      child: Text(
+                    "Register",
+                    style: TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white),
+                  )))
             ],
           ),
         ),
       ),
     );
+  }
+
+  register() async {
+    final reg = await UserRegModel(
+        name: usernameController.text,
+        address: addressController.text,
+        district: districtController.text,
+        pinnumber: pinnumberController.text,
+        housenum: housenoController.text,
+        phone: phonenumController.text,
+        adharnum: adharnumController.text,
+        email: emailController.text);
+    
+    
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iot/constants/size.dart';
 import 'package:iot/main.dart';
 import 'package:iot/screens/bottomnavBar.dart';
+import 'package:iot/screens/userregstration.dart';
 import 'package:iot/screens/widgets/logintextfield.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -149,6 +151,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                       },
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("Not registered"),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Userregstration(),
+                              ));
+                            },
+                            child: Text("Sign up?")),
+                      ],
+                    )
                   ],
                 ),
               ),

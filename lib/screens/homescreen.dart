@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iot/constants/size.dart';
+import 'package:iot/screens/Notifications.dart';
 import 'package:iot/screens/allBillsscreen.dart';
 import 'package:iot/screens/deviseControlscreen.dart';
 import 'package:iot/screens/notificationsScreen.dart';
@@ -42,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                       IconButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => NotificationsScreen(),
+                              builder: (context) => Notifications(),
                             ));
                           },
                           icon: Icon(
